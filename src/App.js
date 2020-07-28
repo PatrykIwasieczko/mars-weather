@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 
 // Components
 import WeatherData from "./components/WeatherData";
+import Informations from "./components/Informations";
 
 // Styles
 import "./App.css";
@@ -61,6 +62,7 @@ const App = () => {
                                 data={weather[selectedDay]}
                                 isMetric={isMetric}
                             />
+                            <Informations />
                         </>
                     )}
                 </div>

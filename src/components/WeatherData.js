@@ -38,7 +38,7 @@ const WeatherData = ({ data, isMetric }) => {
                     <span>{isMetric ? " C" : " F"}</span>
                 </p>
             </div>
-            <div>
+            <div className="pressure">
                 <h2 className="title">Pressure</h2>
                 <p className="reading">
                     <span>{pressure} Pa</span>

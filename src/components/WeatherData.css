@@ -23,12 +23,15 @@
     padding: 0 2em;
 }
 
+.pressure {
+    border-right: solid 0.25em #613131;
+}
+
 .wind {
     display: grid;
 }
 
 .wind__direction {
-    /* --size: 6rem; */
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
@@ -40,20 +43,17 @@
 }
 
 .wind__arrow {
-    /* --direction: ${(props) => props.deg + 'deg'};
-    --size: 0.8rem; */
     height: 2.4rem;
     width: 0.8rem;
     background: #613131;
     clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-    /* transform: translateY(-50%); */
     transform-origin: bottom center;
-    /* transition: -webkit-transform 500ms ease; */
-    /* transition: transform 500ms ease;
-    transition: transform 500ms ease, -webkit-transform 500ms ease; */
+    transition: -webkit-transform 500ms ease;
+    transition: transform 500ms ease;
+    transition: transform 500ms ease, -webkit-transform 500ms ease;
 }
 
-.wind .section-title,
+.wind .title,
 .wind .reading {
     grid-column: 2 / 3;
 }
