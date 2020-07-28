@@ -15,6 +15,7 @@ const App = () => {
     const [loading, setLoading] = useState(true);
     const [weather, setWeather] = useState([]);
     const [selectedDay, setSelectedDay] = useState();
+    const [isMetric, setIsMetric] = useState(true);
 
     useEffect(() => {
         getWeatherData();
@@ -43,8 +44,6 @@ const App = () => {
         setWeather(marsWeather);
         setSelectedDay(marsWeather.length - 1);
         setLoading(false);
-
-        console.log(marsWeather);
     };
 
     return (
@@ -55,8 +54,13 @@ const App = () => {
                         <p>Loading...</p>
                     ) : (
                         <>
-                            <h1>Latest weather at Elysium Plantitia</h1>
-                            <WeatherData data={weather[selectedDay]} />
+                            <h1 className="main-title">
+                                Latest weather at Elysium Plantitia
+                            </h1>
+                            <WeatherData
+                                data={weather[selectedDay]}
+                                isMetric={isMetric}
+                            />
                         </>
                     )}
                 </div>

@@ -4,7 +4,10 @@ import React from "react";
 // Styles
 import "./WeatherData.css";
 
-const WeatherData = ({ data }) => {
+// Utils
+import { formatTemperature, formatWindSpeed } from "../utils";
+
+const WeatherData = ({ data, isMetric }) => {
     const {
         dayKey,
         date,
@@ -14,6 +17,10 @@ const WeatherData = ({ data }) => {
         windSpeed,
         windDirectionDegrees,
     } = data;
+
+    const windDirectionStyles = {
+        transform: `translateY(-50%) rotate(${windDirectionDegrees}deg)`,
+    };
     return (
         <div className="weather-wrapper">
             <div className="date">
@@ -23,28 +30,32 @@ const WeatherData = ({ data }) => {
             <div className="temperature">
                 <h2 className="title">Temperature</h2>
                 <p className="reading">
-                    Highest:
-                    <span>{maxTemp}</span>
-                    <span>C or F</span>
+                    Highest: <span>{formatTemperature(maxTemp, isMetric)}</span>
+                    <span>{isMetric ? " C" : " F"}</span>
                 </p>
                 <p className="reading">
-                    Lowest:
-                    <span>{minTemp}</span>
-                    <span>C or F</span>
+                    Lowest: <span>{formatTemperature(minTemp, isMetric)}</span>
+                    <span>{isMetric ? " C" : " F"}</span>
                 </p>
             </div>
             <div>
-                <h2>Pressure</h2>
-                <p>
+                <h2 className="title">Pressure</h2>
+                <p className="reading">
                     <span>{pressure} Pa</span>
                 </p>
             </div>
             <div>
-                <h2>Wind</h2>
-                <p>
-                    <span>{windDirectionDegrees}</span>
-                    <span>{windSpeed} kph or mph</span>
+                <h2 className="title">Wind</h2>
+                <p className="reading">
+                    <span>{formatWindSpeed(windSpeed, isMetric)}</span>
+                    <span>{isMetric ? " kph" : " mph"}</span>
                 </p>
+                <div className="wind__direction">
+                    <div
+                        className="wind__arrow"
+                        style={windDirectionStyles}
+                    ></div>
+                </div>
             </div>
         </div>
     );
