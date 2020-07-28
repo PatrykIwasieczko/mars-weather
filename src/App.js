@@ -11,6 +11,7 @@ import "./App.css";
 // Utils
 import axios from "axios";
 import { API_URL } from "./API";
+import ToggleUnits from "./components/ToggleUnits";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -62,7 +63,13 @@ const App = () => {
                                 data={weather[selectedDay]}
                                 isMetric={isMetric}
                             />
-                            <Informations />
+                            <div className="informations-wrapper">
+                                <Informations />
+                                <ToggleUnits
+                                    isMetric={isMetric}
+                                    setIsMetric={setIsMetric}
+                                />
+                            </div>
                         </>
                     )}
                 </div>

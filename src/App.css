@@ -64,3 +64,8 @@ a:hover {
     margin: 0;
     color: #989898;
 }
+
+.informations-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
