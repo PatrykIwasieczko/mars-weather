@@ -69,7 +69,7 @@ export const MarsWeather = styled.main`
     background: rgba(0, 0, 0, 0.7);
     padding: 2em;
     max-width: 1000px;
-    margin: 40px 0;
+    margin: 40px 0 100px 0;
     border-radius: 20px;
 
     .main-title {
