@@ -9,7 +9,6 @@ import {
     Pressure,
     Wind,
 } from "./WeatherData.styles";
-// import "./WeatherData.css";
 
 // Utils
 import { formatTemperature, formatWindSpeed } from "../utils";

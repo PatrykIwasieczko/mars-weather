@@ -2,21 +2,18 @@
 import React from "react";
 
 // Styles
-import "./ToggleUnits.css";
+import { Units, ToggleUnitsButton } from "./ToggleUnits.styles";
 
 const ToggleUnits = ({ isMetric, setIsMetric }) => {
     return (
-        <div className="toggle-units">
+        <Units>
             <label htmlFor="cel">°C</label>
-            <button
-                // dataDotStyles={isMetric ? "3px" : "auto"}
-                className={`toggle-units-button ${
-                    isMetric ? "ml-3" : "ml-auto"
-                }`}
+            <ToggleUnitsButton
+                isMetric={isMetric}
                 onClick={() => setIsMetric((prev) => !prev)}
-            ></button>
+            ></ToggleUnitsButton>
             <label htmlFor="fah">°F</label>
-        </div>
+        </Units>
     );
 };
 
