@@ -12,12 +12,14 @@ import "./App.css";
 import axios from "axios";
 import { API_URL } from "./API";
 import ToggleUnits from "./components/ToggleUnits";
+import { PreviousWeather } from "./components/PreviousWeather";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
     const [weather, setWeather] = useState([]);
     const [selectedDay, setSelectedDay] = useState();
     const [isMetric, setIsMetric] = useState(true);
+    const [previous, setPrevious] = useState(false);
 
     useEffect(() => {
         getWeatherData();
@@ -73,6 +75,13 @@ const App = () => {
                         </>
                     )}
                 </div>
+                <PreviousWeather
+                    weather={weather}
+                    previous={previous}
+                    setPrevious={setPrevious}
+                    setSelectedDay={setSelectedDay}
+                    isMetric={isMetric}
+                />
             </div>
         </div>
     );

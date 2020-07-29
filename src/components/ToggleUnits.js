@@ -5,9 +5,6 @@ import React from "react";
 import "./ToggleUnits.css";
 
 const ToggleUnits = ({ isMetric, setIsMetric }) => {
-    const toggleButtonStyles = {
-        marginLeft: `${isMetric ? "3px" : "auto"}`,
-    };
     return (
         <div className="toggle-units">
             <label htmlFor="cel">°C</label>
