@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     --font-size-h2: 2.25rem;
     --font-size-body: 1rem;
     --font-size-xl: 4.5rem;
-    --text-light: #fff;
+    --color-light: #fff;
     --color-gray: #989898;
     --color-dark: #444;
     --color-accent: #D06D6D;

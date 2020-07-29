@@ -2,7 +2,14 @@
 import React from "react";
 
 // Styles
-import "./WeatherData.css";
+import {
+    WeatherWrapper,
+    Date,
+    Temperature,
+    Pressure,
+    Wind,
+} from "./WeatherData.styles";
+// import "./WeatherData.css";
 
 // Utils
 import { formatTemperature, formatWindSpeed } from "../utils";
@@ -22,13 +29,13 @@ const WeatherData = ({ data, isMetric }) => {
         transform: `translateY(-50%) rotate(${windDirectionDegrees}deg)`,
     };
     return (
-        <div className="weather-wrapper">
-            <div className="date">
+        <WeatherWrapper>
+            <Date>
                 <h2>{dayKey}</h2>
                 <p>{date}</p>
-            </div>
-            <div className="temperature">
-                <h2 className="title">Temperature</h2>
+            </Date>
+            <Temperature>
+                <h2 className="section-title">Temperature</h2>
                 <p className="reading">
                     Highest: <span>{formatTemperature(maxTemp, isMetric)}</span>
                     <span>{isMetric ? " C" : " F"}</span>
@@ -37,27 +44,24 @@ const WeatherData = ({ data, isMetric }) => {
                     Lowest: <span>{formatTemperature(minTemp, isMetric)}</span>
                     <span>{isMetric ? " C" : " F"}</span>
                 </p>
-            </div>
-            <div className="pressure">
-                <h2 className="title">Pressure</h2>
+            </Temperature>
+            <Pressure>
+                <h2 className="section-title">Pressure</h2>
                 <p className="reading">
                     <span>{pressure} Pa</span>
                 </p>
-            </div>
-            <div>
-                <h2 className="title">Wind</h2>
+            </Pressure>
+            <Wind deg={windDirectionDegrees}>
+                <h2 className="section-title">Wind</h2>
                 <p className="reading">
                     <span>{formatWindSpeed(windSpeed, isMetric)}</span>
                     <span>{isMetric ? " kph" : " mph"}</span>
                 </p>
-                <div className="wind__direction">
-                    <div
-                        className="wind__arrow"
-                        style={windDirectionStyles}
-                    ></div>
+                <div className="wind-direction">
+                    <div className="wind-arrow"></div>
                 </div>
-            </div>
-        </div>
+            </Wind>
+        </WeatherWrapper>
     );
 };
 

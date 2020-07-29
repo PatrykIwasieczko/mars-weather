@@ -2,11 +2,11 @@
 import React from "react";
 
 // Styles
-import "./Informations.css";
+import { InformationsStyles } from "./Informations.styles";
 
 const Informations = () => {
     return (
-        <div className="informations">
+        <InformationsStyles>
             <p>
                 InSight is taking daily weather measurements (temperature, wind,
                 pressure) on the surface of Mars at Elysium Planitia, a flat,
@@ -20,7 +20,7 @@ const Informations = () => {
                 </a>{" "}
                 to find out more.
             </p>
-        </div>
+        </InformationsStyles>
     );
 };
 
