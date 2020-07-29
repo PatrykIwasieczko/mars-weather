@@ -2,7 +2,12 @@
 import React from "react";
 
 // Styles
-import "./PreviousWeather.css";
+import {
+    Wrapper,
+    ToggleButton,
+    PreviousDays,
+    PreviousDay,
+} from "./PreviousWeather.styles";
 
 export const PreviousWeather = ({
     weather,
@@ -11,46 +16,23 @@ export const PreviousWeather = ({
     setSelectedDay,
     isMetric,
 }) => {
-    const transformStyles = {
-        transform: `${previous ? "translateY(0)" : "translateY(60%)"}`,
-    };
-
-    const previousDayAnimation = {
-        animation: `${previous ? "slideUpIn 750 ms forwards" : null}`,
-    };
-
-    const transformButtonStyles = {
-        transform: `${
-            previous ? "rotate(180deg) translateY(-6px)" : "rotate(0)"
-        }`,
-    };
-
-    const previousWeatherTitleStyles = {
-        textAlign: `${previous ? "left" : "center"}`,
-    };
-
     return (
-        <div className="previous-wrapper" style={transformStyles}>
-            <button
-                className="toggle-button"
+        <Wrapper previous={previous}>
+            <ToggleButton
                 htmlFor="weather-toggle"
                 onClick={() => setPrevious((prev) => !prev)}
                 previous={previous}
             >
-                <span style={transformButtonStyles}>&#8593;</span>
+                <span>&#8593;</span>
                 <span className="sr-only">Show previous weather</span>
-            </button>
-            <h2 className="main-title" style={previousWeatherTitleStyles}>
+            </ToggleButton>
+            <h2 className="main-title previous-weather-title">
                 Previous 7 days
             </h2>
-            <div className="previous-days">
+            <PreviousDays>
                 {weather.map((day, index) => (
-                    <div
-                        key={day.dayKey}
-                        className="previous-day"
-                        style={previousDayAnimation}
-                    >
-                        <h3 className="previous-day__sol">
+                    <PreviousDay key={day.dayKey} previous={previous}>
+                        <h3 className="previous-day-sol">
                             <span>{day.dayKey}</span>
                         </h3>
                         <p className="previous-day-date">{day.date}</p>
@@ -70,9 +52,9 @@ export const PreviousWeather = ({
                         >
                             More info
                         </button>
-                    </div>
+                    </PreviousDay>
                 ))}
-            </div>
-        </div>
+            </PreviousDays>
+        </Wrapper>
     );
 };
