@@ -6,13 +6,21 @@ import WeatherData from "./components/WeatherData";
 import Informations from "./components/Informations";
 
 // Styles
-import "./App.css";
+import {
+    GlobalStyle,
+    AppWrapper,
+    MarsWeather,
+    InformationsWrapper,
+} from "./App.styles";
 
 // Utils
 import axios from "axios";
 import { API_URL } from "./API";
 import ToggleUnits from "./components/ToggleUnits";
 import { PreviousWeather } from "./components/PreviousWeather";
+
+// Img
+import BGImage from "./img/mars.jpg";
 
 const App = () => {
     const [loading, setLoading] = useState(true);
@@ -51,9 +59,10 @@ const App = () => {
     };
 
     return (
-        <div className="App">
-            <div className="wrapper">
-                <div className="mars-weather">
+        <>
+            <GlobalStyle bgImage={BGImage} />
+            <AppWrapper>
+                <MarsWeather>
                     {loading ? (
                         <p>Loading...</p>
                     ) : (
@@ -65,16 +74,16 @@ const App = () => {
                                 data={weather[selectedDay]}
                                 isMetric={isMetric}
                             />
-                            <div className="informations-wrapper">
+                            <InformationsWrapper>
                                 <Informations />
                                 <ToggleUnits
                                     isMetric={isMetric}
                                     setIsMetric={setIsMetric}
                                 />
-                            </div>
+                            </InformationsWrapper>
                         </>
                     )}
-                </div>
+                </MarsWeather>
                 <PreviousWeather
                     weather={weather}
                     previous={previous}
@@ -82,8 +91,8 @@ const App = () => {
                     setSelectedDay={setSelectedDay}
                     isMetric={isMetric}
                 />
-            </div>
-        </div>
+            </AppWrapper>
+        </>
     );
 };
 
