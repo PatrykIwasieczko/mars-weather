@@ -24,9 +24,6 @@ const WeatherData = ({ data, isMetric }) => {
         windDirectionDegrees,
     } = data;
 
-    const windDirectionStyles = {
-        transform: `translateY(-50%) rotate(${windDirectionDegrees}deg)`,
-    };
     return (
         <WeatherWrapper>
             <Date>
